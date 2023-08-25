@@ -43,7 +43,7 @@ services:
     ports:
       - "${BACKEND_PORT}:5040"
     environment:
-      - FRONTEND_URL=http://localhost:${FRONTEND_PORT}
+      - FRONTEND_URL=${APP_BASE_URL}:${FRONTEND_PORT}
       - MONGO_URL='mongodb://mongo_db:${MONGO_PORT}'
       - MONGO_USER=${MONGO_DB_USER}
       - MONGO_PASS=${MONGO_DB_PWD}
@@ -63,5 +63,5 @@ services:
       dockerfile: Dockerfile
       context: ./frontendA
     environment:
-      - REACT_APP_BACKEND_URL=http://localhost:${BACKEND_PORT}
+      - REACT_APP_BACKEND_URL=${APP_BASE_URL}:${BACKEND_PORT}
     stdin_open: true
