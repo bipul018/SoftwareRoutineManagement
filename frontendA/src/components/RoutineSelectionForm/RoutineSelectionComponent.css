@@ -1,0 +1,29 @@
+/* RoutineSelectionComponent.css */
+
+.container {
+    display: flexbox;
+    flex-direction: row;
+  }
+  
+  .facultyWrapper,
+  .semesterWrapper,
+  .viewRoutineWrapper {
+    margin: 0px;
+
+  }
+.option-row{
+  display: flexbox;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: left;
+}
+.addButtonsWrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+}
+.addTeacher{
+  margin-right: 10px;
+}

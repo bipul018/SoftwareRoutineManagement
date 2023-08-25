@@ -1,0 +1,51 @@
+.MuiTableCell-root {
+  text-align: justify;
+  min-width: 40px;
+  max-width: 40px;
+  height: 50px;
+  margin-top: 1000px;
+  border: 1px solid black !important;
+}
+
+.MuiTableCell-head {
+  background-color: #1f466b !important;
+  font-weight: 600 !important;
+  font-size: medium !important;
+  color: #d3d0c3 !important;
+  border: 1px solid #d3d0c3 !important;
+  margin-bottom: 10px !important;
+}
+
+.relative {
+  position: relative;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.MuiPaper-elevation1 {
+  box-shadow: none !important;
+}
+
+.search-area {
+  margin: 20px;
+  margin-left: 900px;
+  margin-right: 50px;
+  margin-top: 100px;
+}
+.search-area.search-box p {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  line-height: 26px;
+}
+
+.active {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(238, 223, 14);
+}
+/* .normal {
+  background-color: white;
+} */

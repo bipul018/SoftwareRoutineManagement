@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: row; /* or 'row-reverse' if you want to reverse the order */
+}
+
+.left-column {
+  flex: auto;
+  text-align: left; /* Change to 'left' */
+  margin-right: 10px;
+}
+
+.right-column {
+  flex:500;
+  margin-left: 1px;
+}
+
+label {
+  width: 100%;
+  color: black;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  text-align: left; 
+  margin-left: 1px;
+}

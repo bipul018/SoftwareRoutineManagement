@@ -1,0 +1,20 @@
+.view-routine-button {
+    display: flexbox;
+    align-self: left;/*dont know*/
+    justify-content: center;
+    
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f8d71c;
+    color: #242424;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .view-routine-button:hover {
+    background-color: #f5c411;
+  }
+  

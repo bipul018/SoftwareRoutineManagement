@@ -1,0 +1,125 @@
+/* overall profile card */
+.ProfileCard {
+	width: 800px;
+	height: 600px;
+	display: center;
+	/* background-color: rgb(116, 238, 238); */
+	background: linear-gradient(to left, #057a8f, #ee1e1e);
+	border-radius: 10px;
+	box-shadow: 0px 10px 10px 0px rgb(237, 237, 241);
+	text-align: center;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 14px;
+	margin-left: 260px;
+	margin-right: 260px;
+	position: relative;
+}
+/* upper rectangular box */
+.photograph-part {
+	height: 200px;
+	background: linear-gradient(to left, #087dcc, #d44e18);
+	margin-bottom: 20px;
+}
+.image-container {
+	padding-right: 600px;
+	padding-left: 200px;
+}
+/* circular photo containing part  */
+.image-container img {
+	background: rgb(221, 183, 13);
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	padding: 5px;
+	transform: translate(96px, 49px);
+	margin-left: 0px;
+}
+img {
+	border: 4px solid rgba(2, 156, 167, 0.609);
+	margin-left: 100px;
+}
+
+.description-part {
+	padding-top: 100px;
+	padding-bottom: 200px;
+	height: 1000px;
+	margin-top: 260px;
+	display: inline;
+	text-align: center;
+	justify-content: space-around;
+	font: 1000;
+	font-style: oblique;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	/* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", */
+	/* "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+}
+div.description-part {
+	color: #dae0e9;
+	font-size: 50px;
+	font-weight: bold;
+	font-style: normal;
+	padding-top: 50px;
+}
+/* about  */
+.description-part p {
+	color: #3de7e7;
+	font-size: 50px;
+}
+
+/* titles */
+.description-part h1 {
+	color: #3de7e7;
+	margin: 0px;
+	padding: 0px;
+	font-size: 50px;
+	font-style: normal;
+	font: bolder;
+	font-weight: bold;
+	padding-top: 60px;
+}
+
+/* descriptions */
+.description-part h3 {
+	color: #353532;
+	font-size: 30px;
+	font-style: inherit;
+  font-weight: 26px;
+	
+}
+
+/* name short form */
+.description-part h2 {
+	color: #3de798;
+	font-family: cursive;
+	font-size: 30px;
+	font-style: normal;
+	font: bolder;
+}
+
+.btn {
+	background: #1197e4;
+	background-image: -webkit-linear-gradient(top, #1b7070, #c0c3cc);
+	background-image: -moz-linear-gradient(top, #1b7048, #909297);
+	background-image: -ms-linear-gradient(top, #6b91c4, #3561db);
+	background-image: -o-linear-gradient(top, #9ab8df, #70e22e);
+	background-image: linear-gradient(to bottom, #25bb8e, #a7279c);
+	-webkit-border-radius: 28;
+	-moz-border-radius: 28;
+	border-radius: 28px;
+	font-family: Georgia;
+	color: #dae0e9;
+	font-size: 18px;
+	padding: 9px 24px 9px 24px;
+	text-decoration: none;
+}
+
+.btn:hover {
+	cursor: pointer;
+	background: #bae00d;
+	text-decoration: none;
+	color: aqua;
+}
+h3 {
+  font-style: italic;
+}
