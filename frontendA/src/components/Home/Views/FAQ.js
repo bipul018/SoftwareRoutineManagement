@@ -1,6 +1,8 @@
 import React from "react";
 import { Collapse, Button } from "antd";
 import "./Views.css";
+import { List } from "antd/lib";
+import Item from "antd/lib/list/Item";
 
 const { Panel } = Collapse;
 
@@ -9,62 +11,41 @@ function AppFAQ() {
 		<div id="faq" className="block faqBlock">
 			<div className="container-fluid">
 				<div className="titleHolder">
-					<h2>
-						<strong>Frequently Asked Question</strong>{" "}
-					</h2>
-					<p> Solving queries about the app </p>
+					
+					<p> Some questions you may have </p>
 				</div>
-				<Collapse defaultActiveKey={["1"]}>
+				<Collapse defaultActiveKey={["0"]}>
 					<Panel header="How do I manage my Account?" key="1">
 						<p>
-							Accounts are managed directly by the IT Block of
-							ICTC. Initially , respective ID and passwords are
-							provided to all the faculty heads and teachers .
-							Later on , your accounts private profile can be
-							modified according to ur identification.
-						</p>
-					</Panel>
-					<Panel header="How do I change my password?" key="2">
-						<p>
-							"Forgot my Password" appears as in all other apps.
-							When clicked on that , the page is redirected to to
-							the IT block of ICTC and the password changing code
-							is provided to you via college mail.
+							Accounts are no longer used. This application is intended for admin use only. Please ignore any remaining instances of accounts.
 						</p>
 					</Panel>
 					<Panel
-						header="What special features are for Admin?"
+						header="What features are available?"
 						key="3">
 						<p>
-							CONTENTS TO BE FILLED BY BACKEND-ERS!!! DO FILL IT.
+							<List >
+								<p>1. The routine can be freely edited by adding new classes, editing existing classes or deleting classes.</p>
+								<p>2. The add class button appears at the middle of any empty cell on hovering.</p>
+								<p>3. The edit and delete class button appears at the center lower end of any class cell on hovering.</p>
+								
+								<p>4. Any overlap of teachers in different classes at the same time slot is notified.</p>
+								<p>5. Any time overlap of new classes with old classes is notified.</p>
+								<p>6. Overlapped labs are displayed by dividing into subrows.</p>
+							</List>
 						</p>
 					</Panel>
 					<Panel
-						header="What special features are for Teaching staffs?"
+						header="Why are some features missing?"
 						key="4">
 						<p>
-							CONTENTS TO BE FILLED BY BACKEND-ERS!!! DO FILL IT.
+							The codebase for this application was in a dire state when we were assigned with this project, and only worked for the dummy that was used for the demo. A lot of dependencies were, and still are, deprecated. 
+							A majority of the time was spent in making the application actually functional by refactoring the codebase, locating bugs, and making quality of life improvements. All while learning web development for the first time. 
+							Hence, the application is far from perfect and may have some features missing that might have slipped our minds. For these features, please inform the new batch of software engineering students. Thank you. 
 						</p>
 					</Panel>
 				</Collapse>
-				<div className="quickSupport">
-					<h1>
-						<strong>
-							Want Immediate Responses for the Queries?
-						</strong>
-					</h1>
-					<p>
-						Sorry for the inconveniences. You can email us for your
-						further queries. We will try to solve it within a day or
-						two. Thank you !!!
-					</p>
-					<Button
-						type="primary"
-						size="large"
-						href="https://www.google.com/gmail">
-						<i className="fas fa-envelope"></i>Email your Question
-					</Button>
-				</div>
+
 			</div>
 		</div>
 	);

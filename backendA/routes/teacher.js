@@ -120,7 +120,7 @@ router.post("/edit/:id", async function (req, res) {
   })
 })
 
-router.delete("/delete/:id", async function (req, res) {
+router.post("/delete/:id", async function (req, res) {
   try {
     await Teacher.deleteOne({ _id: req.params.id })
     return res.json({
@@ -129,6 +129,7 @@ router.delete("/delete/:id", async function (req, res) {
       msg: "Teacher removed successfully.",
     })
   } catch (err) {
+    console.log(err)
     return res.json({
       status: false,
       data: {},

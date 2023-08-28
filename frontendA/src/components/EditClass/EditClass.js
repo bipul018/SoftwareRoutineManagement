@@ -81,7 +81,7 @@ class EditClassPopupForm extends Component {
 
   getSubjectData = async () => {
     console.log('Got subjects')
-    let { data: res } = await axios.get(apiSubjectUrl + `/all`);
+    let { data: res } = await axios.get(apiSubjectUrl + `/`);
     this.setState({ subjectData: res.data });
   }
 
@@ -163,7 +163,7 @@ class EditClassPopupForm extends Component {
         const occupiedAtPeriod = resAvailability.data.data.overlapAt;
         const occupiedAtClass = resAvailability.data.data.overlapClass
         const occupiedAtProgram = occupiedAtClass.routineFor;
-        const occupiedAtSubjectStr = `${occupiedAtClass.subjectName} [${occupiedAtClass.classType}]\r\n Period: ${occupiedAtClass.startingPeriod} - ${occupiedAtClass.startingPeriod + occupiedAtClass.noOfPeriod - 1}`;
+        const occupiedAtSubjectStr = `${occupiedAtClass.subject.subjectName} [${occupiedAtClass.classType}]\r\n Period: ${occupiedAtClass.startingPeriod} - ${occupiedAtClass.startingPeriod + occupiedAtClass.noOfPeriod - 1}`;
 
         const overlapClassStr = `Year ${occupiedAtProgram.year} ${occupiedAtProgram.programName} ${occupiedAtProgram.section}`
         Modal.warning({
@@ -194,7 +194,7 @@ class EditClassPopupForm extends Component {
 
       const overlapClass = validity.overlap;
       const programStr = `Year ${year}/${part} ${programName} ${section}`
-      const invalidLengthWarning = `Period collides with class ${overlapClass.subjectName} [${overlapClass.classType}] for ${programStr}`
+      const invalidLengthWarning = `Period collides with class ${overlapClass.subject.subjectName} [${overlapClass.classType}] for ${programStr}`
       Modal.warning({title: invalidLengthWarning});
       return false
 
@@ -256,15 +256,12 @@ class EditClassPopupForm extends Component {
 
           <Select
             onChange={(value) => this.setState({ selectedSubjectID: value })}
-            
-            // defaultValue = {this.props.classObj.subject._id}
-            // initialValue = {defaultValue}
-            // initialValue = {this.props.classObj.subject._id}
-            // value={this.props.classObj.subject._id}
+            optionFilterProp="label"
+            showSearch
           >
             {subjectData.map((item, index) => {
               return (
-                <Option key={item.subjectName} value={item._id}>
+                <Option key={item.subjectName} value={item._id} label={item.subjectName}>
                   {item.subjectName}
                 </Option>
               );
@@ -304,6 +301,7 @@ class EditClassPopupForm extends Component {
           initialValue={this.props.classObj.teacherName.map(t => t._id)}
           >
           <Select
+            optionFilterProp="label"
             mode="multiple"
             dropdownAlign="bottom"
             
@@ -311,7 +309,7 @@ class EditClassPopupForm extends Component {
           >
             {Object.values(teacherData).map((item, index) => {
               return (
-                <Option key={item} value={item._id}>
+                <Option key={item} value={item._id} label={item.teacherName}>
                   {item.teacherName}
                 </Option>
               );

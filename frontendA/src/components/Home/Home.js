@@ -14,7 +14,7 @@ function AppHome() {
 			<AppAbout />
 			<AppFeature />
 			<AppFAQ />
-			<AppContact />
+			{/* <AppContact /> */}
 		</div>
 	);
 }

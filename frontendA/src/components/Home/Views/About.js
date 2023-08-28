@@ -8,21 +8,21 @@ const items = [
 	{
 		key: "1",
 		icon: <i className="fas fa-chart-pie"></i>,
-		title: "High performance",
+		title: "Add and edit",
 		content:
-			"speedy working capability in comparison to similar related apps",
+			"Add and edit classes, programs, subjects, teachers and so on",
 	},
 	{
 		key: "2",
 		icon: <i className="fas fa-desktop"></i>,
-		title: "Web compatible",
-		content: "compatible in every domain",
+		title: "Warnings",
+		content: "Warnings are shown on teacher and period collisions/overlap.",
 	},
 	{
 		key: "3",
 		icon: <i className="fas fa-database"></i>,
-		title: "Simplified workflow",
-		content: "simplifies the making of routine for different faculties",
+		title: "Teacher routines",
+		content: "View routines of any teacher in the database",
 	},
 ];
 
@@ -39,11 +39,7 @@ function AppAbout() {
 
 				<div className="contentHolder">
 					<p>
-						We designed this application to ease the tedious task of
-						manually routine creation . Also taking in consideration
-						the fact that PUlchowk being a college with very large
-						numbers of facultied . To ease the task , this app is
-						developed.{" "}
+						This application is an attempt at easing the task of routine making.{" "}
 					</p>
 				</div>
 				<Row gutter={[16, 16]}>

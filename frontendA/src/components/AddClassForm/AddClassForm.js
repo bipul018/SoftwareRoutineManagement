@@ -336,7 +336,7 @@ class AddClassPopupForm extends Component {
 
   getSubjectData = async () => {
     console.log('Got subjects')
-    let { data: res } = await axios.get(apiSubjectUrl + `/all`);
+    let { data: res } = await axios.get(apiSubjectUrl + `/`);
     this.setState({ subjectData: res.data });
   }
 
@@ -396,7 +396,7 @@ class AddClassPopupForm extends Component {
 
       const overlapClass = validity.overlap;
       const programStr = `Year ${year}/${part} ${programName} ${section}`
-      const invalidLengthWarning = `Period collides with class ${overlapClass.subjectName} [${overlapClass.classType}] for ${programStr}`
+      const invalidLengthWarning = `Period collides with class ${overlapClass.subject.subjectName} [${overlapClass.classType}] for ${programStr}`
       Modal.warning({title: invalidLengthWarning});
       return false
 
@@ -426,7 +426,7 @@ class AddClassPopupForm extends Component {
         const occupiedAtPeriod = resAvailability.data.data.overlapAt;
         const occupiedAtClass = resAvailability.data.data.overlapClass
         const occupiedAtProgram = occupiedAtClass.routineFor;
-        const occupiedAtSubjectStr = `${occupiedAtClass.subjectName} [${occupiedAtClass.classType}]\r\n Period: ${occupiedAtClass.startingPeriod} - ${occupiedAtClass.startingPeriod + occupiedAtClass.noOfPeriod - 1}`;
+        const occupiedAtSubjectStr = `${occupiedAtClass.subject.subjectName} [${occupiedAtClass.classType}]\r\n Period: ${occupiedAtClass.startingPeriod} - ${occupiedAtClass.startingPeriod + occupiedAtClass.noOfPeriod - 1}`;
 
         const overlapClassStr = `Year ${occupiedAtProgram.year} ${occupiedAtProgram.programName} ${occupiedAtProgram.section}`
         Modal.warning({
@@ -464,6 +464,9 @@ class AddClassPopupForm extends Component {
           onFinish={this.onFinish}
           onValuesChange={(value) => {
             try {
+              console.log("vALUE  ")
+              console.log(value)
+
               if (value.noOfPeriod != undefined)
                 this.setState({noOfPeriod: parseInt(value.noOfPeriod)},async () => {
                   await this.handlePeriodLength()
@@ -490,20 +493,16 @@ class AddClassPopupForm extends Component {
             ]}
           >
             <Select
+              showSearch
+              optionFilterProp="label"
               onChange={(value) => {
                 console.log("value",value)
                 this.setState({ selectedSubjectID: value })
               }}
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter Subject Name",
-                },
-              ]}
             >
               {subjectData.map((item, index) => {
                 return (
-                  <Option key={item.subjectName} value={`${item._id}`}>
+                  <Option key={item.subjectName} value={`${item._id}`} label={item.subjectName}>
                     {item.subjectName}
                   </Option>
                 );
@@ -545,8 +544,7 @@ class AddClassPopupForm extends Component {
             <Select
               mode="multiple"
               // placeholder="Select a option and change input text above"
-
-              
+              optionFilterProp="label"
               onChange={(values) => {
                 console.log(values)
                 // this.handleTeacherSelection(values);
@@ -555,7 +553,7 @@ class AddClassPopupForm extends Component {
             >
               {Object.values(teacherData).map((item, index) => {
                 return (
-                  <Option key={item} value={item._id}>
+                  <Option key={item._id} value={item._id} label={item.teacherName}>
                     {item.teacherName}
                   </Option>
                 );

@@ -7,7 +7,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-//import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import axios from "axios";
 import "./Routine.css";
 import { Select } from "antd";

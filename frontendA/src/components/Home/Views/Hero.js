@@ -15,7 +15,7 @@ function AppHero() {
   return (
     <div id="hero" className="heroBlock">
       <div id="background-img"></div>
-      <Carousel>
+      {/* <Carousel> */}
         {/* {items.map((item) => {
 					return (
 						<div className="container-fluid">
@@ -31,7 +31,7 @@ function AppHero() {
 						</div>
 					);
 				})} */}
-      </Carousel>
+      {/* </Carousel> */}
     </div>
   );
 }

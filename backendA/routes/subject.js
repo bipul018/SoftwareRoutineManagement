@@ -5,7 +5,7 @@ const Subject = require("../Schema/subjectSchema.js");
 const { dummySubjectID } = require("../defines/defines.js");
 
 
-router.get('/all/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         let subjectObjs = await Subject.find();
         subjectObjs = subjectObjs.filter(s => s._id != dummySubjectID);
@@ -77,5 +77,51 @@ router.post('/add/', async (req, res) => {
         })
     }
 })
+
+router.post('/edit/:id', async (req, res) => {
+    const {subjectName, subjectCode} = req.body;
+    try {
+        const subjectObj = await Subject.findById(req.params.id);
+        subjectObj.subjectName = subjectName;
+        subjectObj.subjectCode = subjectCode;
+
+        await subjectObj.save();
+
+        return res.json({
+            status: true,
+            data: subjectObj,
+            err: {},
+            msg: "Subject updated successfully.",
+        })
+    } catch (error) {
+        console.log(error);
+        return res.json({
+            status: false,
+            data: {},
+            err: error,
+            msg: "Couldn't update subject.",
+        })
+    }
+})
+
+router.post('/delete/:id', async (req, res) => {
+    try {
+        await Subject.deleteOne({_id: req.params.id});
+
+        return res.json({
+            status: true,
+            err: {},
+            msg: "Subject deleted successfully.",
+        })
+    } catch (error) {
+        console.log(error);
+        return res.json({
+            status: false,
+            err: error,
+            msg: "Couldn't update subject.",
+        })
+    }
+})
+
 
 module.exports = router;

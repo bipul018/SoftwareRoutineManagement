@@ -1,7 +1,6 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { Modal, Button, Tooltip, Divider } from "antd";
-import { Row, Col} from "antd"
+import { Modal, Button, Tooltip} from "antd";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -15,15 +14,13 @@ import { AddClassPopupForm } from "../../components/AddClassForm/AddClassForm";
 import { EditClassPopupForm } from "../../components/EditClass/EditClass";
 import "./Profile.css";
 import "../Routine/Routine.css";
-// import adminProfilePic from "./BibhaSthapit.jpeg";
+
 import RoutineSelectionComponent from "../../components/RoutineSelectionForm/RoutineSelectionComponent";
 
 // to generate pdf
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { apiClassUrl } from "../../utils/utils";
-import Column from "antd/lib/table/Column";
-import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles({
   table: {
@@ -214,12 +211,7 @@ function RoutineTable(props) {
         Wednesday: createIndices("Wednesday"),
         Thursday: createIndices("Thursday"),
         Friday: createIndices("Friday"),
-      };
-
-      
-
-      console.log("hyaaaa");
-      console.log(routineTable);
+      };      
 
       const daysColumn = []
       Object.keys(routineTable).forEach((day) => {
@@ -228,7 +220,6 @@ function RoutineTable(props) {
           daysColumn.push({data: undefined, open: false, dayShow:false, day: day});
         }
       })
-      console.log(daysColumn);
 
       
       const setTable = ()=>{
@@ -249,9 +240,6 @@ function RoutineTable(props) {
       }
       rTable = setTable();
 
-      console.log("rtable");
-
-      console.log(rTable);
   }
 
   // Loops through multiple teachers name &&
@@ -265,14 +253,6 @@ function RoutineTable(props) {
       name = teacherNames[i].teacherName;
       id = teacherNames[i]._id;
 
-      // // create or update teacherTable
-      // if (!teacherTable[id]) {
-      //   teacherTable[id] = createPeriodIndices();
-      // } else {
-      //   for (let j = --idx; j < idx + noOfPeriods; j++)
-      //     delete teacherTable[id][j];
-      // }
-
       // push multiple teacherNames
       i === teacherNames.length - 1
         ? teacherArr.push(<>{name}</>)
@@ -285,7 +265,7 @@ function RoutineTable(props) {
     const input = document.querySelector("#admin_table_body");
   
     // Set the page size for the PDF
-    const pdf = new jsPDF("p", "pt", "a4");
+    const pdf = new jsPDF("p", "pt", "a3");
   
     // Function to convert the HTML element to canvas
     const canvasToImage = async () => {
@@ -297,7 +277,7 @@ function RoutineTable(props) {
     // Convert the HTML to canvas and then to an image
     canvasToImage().then((imgData) => {
       // Add the image to the PDF
-      pdf.addImage(imgData, "JPEG", 20, 20, 550, 400);
+      pdf.addImage(imgData, "JPEG", 20, 20, 750, 400);
   
       // Save the PDF with the filename "Myroutine.pdf"
       pdf.save("Myroutine.pdf");
@@ -424,6 +404,30 @@ function RoutineTable(props) {
       [{classData.classType}]
 
       <br></br>
+      {!isTeacherMode?
+      <Tooltip
+        title="Add Class"
+        placement="bottom"
+      >
+        <Button
+          ghost
+          type="dashed"
+          size="small"
+          onClick={() =>
+            {
+              const programDetails = {
+                program: selectedOptions.program,
+                year: selectedOptions.year,
+                part: selectedOptions.part,
+                section: selectedOptions.section,
+              }
+              handleAddClassForm(programDetails, day, classData.startingPeriod);
+            }
+          }
+        >
+          a
+        </Button>
+      </Tooltip>:null}
       {!isTeacherMode?
       <Tooltip
         title="Edit Class"

@@ -45,9 +45,9 @@ function AppHeader() {
             <Link href="/#about" title="About" />
             <Link href="/#feature" title="Features" />
             <Link href="/#faq" title="FAQ" />
-            <Link href="/#contact" title="Contact" />
+            {/* <Link href="/#contact" title="Contact" /> */}
 
-            <div className="b">
+            {/* <div className="b">
               <Router>
                 <Links to="/user/login">
                   <Button className="btn" type="primary" size="large">
@@ -55,7 +55,7 @@ function AppHeader() {
                   </Button>
                 </Links>
               </Router>
-            </div>
+            </div> */}
           </Anchor>
         </div>
 
@@ -75,8 +75,8 @@ function AppHeader() {
               <Link href="/#about" title="About" />
               <Link href="/#feature" title="Features" />
               <Link href="/#faq" title="FAQ" />
-              <Link href="/#contact" title="Contact" />
-              <div className="btnHolder">
+              {/* <Link href="/#contact" title="Contact" /> */}
+              {/* <div className="btnHolder">
                 {user ? (
                   <Button type="primary" size="large">
                     Logout
@@ -86,7 +86,7 @@ function AppHeader() {
                     Login
                   </Button>
                 )}
-              </div>
+              </div> */}
             </Anchor>
           </Drawer>
         </div>
