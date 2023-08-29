@@ -2,7 +2,7 @@
 
 
 
-export FRONTEND_URL=http://${FRONT_URL}:3000
+export FRONTEND_URL=http://${FRONT_URL}
 export MONGO_URL=${MONGODB_URL}
 export MONGO_USER=user
 export MONGO_PASS=resu
