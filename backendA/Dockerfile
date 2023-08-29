@@ -1,9 +1,20 @@
-FROM node:20.5-alpine
+FROM node:20.3
 
-WORKDIR /app
+WORKDIR /app/
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm i
-COPY ./ ./
+RUN ls
 
-CMD node db.js ; npm start
+RUN npm i
+RUN ls
+
+COPY ./ ./
+RUN ls
+
+COPY run_services.sh .
+
+
+EXPOSE 5040
+EXPOSE 3000
+
+CMD ["/bin/bash", "-c", "/app/run_services.sh"]
