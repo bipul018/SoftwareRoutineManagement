@@ -26,64 +26,6 @@ mongoose.connect(dburl, {
 .catch((err) => console.log(err));
 
 
-
-var teacherData = [
-    {
-        name: "Loknath Regmi",
-        abv: "LNR",
-    },
-    {
-        name: "Prof. Dr. Subarna Shakya",
-        abv: "Prof. Dr. SS",
-    },
-    {
-        name: "Bikal Adhikari",
-        abv: "BA",
-    },
-    {
-        name: "Dr. Nanda Bikram Adhikari",
-        abv: "Dr. NBA",
-    },
-    {
-        name: "Anand Kumar Sah",
-        abv: "AKS",
-    },
-    {
-        name: "Dr. Aman Shakya",
-        abv: "Dr. AS",
-    },
-    {
-        name: "Sajana Shakya",
-        abv: "SS",
-    },
-    {
-        name: "Kiran Bhattarai",
-        abv: "KB",
-    },
-    {
-        name: "Vijay Kumar Yadav",
-        abv: "VKY",
-    },
-    {
-        name: "Mahesh Bhatta",
-        abv: "MB",
-    },
-    {
-        name: "Santosh Jha",
-        abv: "SJ",
-    },
-    {
-        name: "Madhav Dahal",
-        abv: "MD",
-    }
-];
-
-
-
-var routineData = [
-    // BCTY3S1AB,
-];
-
 //import { read_excel,write_excel } from './excel_process.js';
 const ExcelParse = require("./excel_process.js")
 
@@ -91,31 +33,58 @@ const ExcelParse = require("./excel_process.js")
 const setData = async ()=>{
 
     //await importDataFromExcel();
+    {
+        class_count =   await Class.countDocuments({});
+        teacher_count = await Teacher.countDocuments({});
+        program_count = await Program.countDocuments({});
+        subject_count = await Subject.countDocuments({});
+        console.log("Previous state of database : ")
+        console.log("Class Count = " , class_count);
+        console.log("Teacher Count = ", teacher_count);
+        console.log("Program Count = ", program_count);
+        console.log("Subject Count = ", subject_count);
 
+        if((teacher_count > 0) && (program_count > 0) && (subject_count > 0))
+        {
+            console.log("Database already populated, skipping loading of defaults.");
+            process.exit();
+        }
+
+        console.log("At least one collection found empty, populating database with defaults.");
+    }
+    //Only load data if all collections are already populated
     var excel_data = await ExcelParse.read_excel("dbdata/routine_input.xlsx");
     teacherData = excel_data.teacher_list;
     routineData = excel_data.routine_list;
     subjectData = excel_data.subject_list;
     sectionData = excel_data.section_list;
 
+
+
     //console.log(teacherData);
-    //console.log(routineData)
+    //console.log(routineData);
+
+    //Clear any garbage collection
     try {
         const db = mongoose.connection.db;
     
         // Get all collections
         const collections = await db.listCollections().toArray();
-    
+
+        
         // Create an array of collection names and drop each collection
         collections
           .map((collection) => collection.name)
           .forEach(async (collectionName) => {
+            
             db.dropCollection(collectionName);
-          });
+        });
     
       } catch (e) {
         console.log(e);
       }
+
+
 //await mongoose.connection.dropDatabase();
     // make teacher objects and add to db
     const teacherObjs = []
@@ -133,7 +102,7 @@ const setData = async ()=>{
     catch(err){console.log(err);}
 
     console.log("Added teachers")
-    console.log(subjectData);
+    //console.log(subjectData);
     const subjectObjs = []
     try{
         // await Promise.all(subjects.forEach(async (item)=>{
