@@ -12,7 +12,7 @@ COPY ./ ./
 RUN ls
 
 COPY run_services.sh .
-
+RUN chmod +x /app/run_services.sh
 
 EXPOSE 5040
 
