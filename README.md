@@ -1,36 +1,25 @@
-# SoftwareProject
-First install docker in the system to run
+## IOE Routine Management System - Backend
 
-Then need to make a .env file in root folder {if not created already}
-In .env file, need to set following environment variables before starting docker-compose
-MONGO_PORT=27017
-MONGO_ADMIN=root
-MONGO_PASSWORD=toor
-MONGO_DB_USER=user
-MONGO_DB_PWD=resu
-MONGO_DB_NAME=bunbun
+- This is IOE Routine Management System for managing your everyday Lectures and Labs in IOE - developed using React.js and [Ant-Design](https://ant.design/) Component Library.
 
-Also need to set these variables, but can be set to anything:
-#Need to forward these two ports
-BACKEND_PORT=<Set a port where backend server runs>
-FRONTEND_PORT=<Set a port where frontend server runs>
-#Need to set this url to the public url that the app finally should use
-APP_BASE_URL=<Set the base url of server where webapp is hosted, eg for local run set http://localhost>
+- You can database of teacher, class and groups. You can also edit and delete any lecture/lab classes.
 
+## Installation - Backend
 
-After setting all the required environment variables, 
-setup docker using 
-docker-compose build
-Then start services using
-docker-compose up
+- You need Node & Yarn to start the development environment. Download them here - [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com).
 
+- Install Packages using:
 
-Now access the app using the just above set app url followed by frontend port 
-<url>:<frontend port>
+```bash
+npm install
+```
 
-For eg if 
-FRONTEND_PORT=2999
-and
-APP_BASE_URL=http://localhost
-access as 
-http://localhost:2999
+- Run the development server using:
+
+```bash
+npm start
+```
+
+## Note
+
+- You also need to run the frontend along with backend. For that open frontend folder separately and read the readme file for instructions.
