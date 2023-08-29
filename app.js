@@ -23,7 +23,6 @@ app.set("view engine", "jade")
 app.use(cookieParser("process.env.SESSION_SECRET"))
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 )
@@ -97,8 +96,8 @@ app.use(function (err, req, res, next) {
 })
 
 module.exports = app
-let frontend = process.env.FRONTEND_URL;
-console.log({frontend})
+// let frontend = process.env.FRONTEND_URL;
+// console.log({frontend})
 // const MongoClient = require('mongodb').MongoClient
 // const assert = require('assert')
 
