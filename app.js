@@ -17,15 +17,24 @@ const programRouter = require("./routes/program")
 
 const app = express()
 
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "jade")
 
 app.use(cookieParser("process.env.SESSION_SECRET"))
 app.use(
   cors({
+    origin: "http://localhost",
     credentials: true,
   })
 )
+// // Send the React app's HTML file for all other routes
+// app.get('/user', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+
+
 
 mongoose.connect(
   //"mongodb+srv://santos7117:7117santos@routine.tnsnq.mongodb.net/Routine?retryWrites=true&w=majority",
@@ -56,7 +65,7 @@ db.once("open", function () {
 
 app.use(logger("dev"))
 app.use(express.json())
-app.use(express.static(__dirname + "/public"))
+//app.use(express.static(__dirname + "/public"))
 app.use(express.urlencoded({ extended: false }))
 
 app.use(
@@ -73,9 +82,13 @@ app.use(passport.session())
 require("./config/passport")
 
 app.use("/", indexRouter)
-app.use("/user", userRouter)
-app.use("/admin", adminRouter)
+//app.use("/user", userRouter)
+app.use("/api/user/admin", adminRouter)
 app.use("/api/class", classRouter)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // app.use("/api/program", programRouter)
 

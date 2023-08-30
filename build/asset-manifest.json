@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.892c7f1f.css",
+    "main.js": "/static/js/main.5a0b5ed8.js",
+    "static/js/703.803384da.chunk.js": "/static/js/703.803384da.chunk.js",
+    "static/js/278.58f85fd5.chunk.js": "/static/js/278.58f85fd5.chunk.js",
+    "static/media/home-page-pulchowk.jpg": "/static/media/home-page-pulchowk.8ffe9b6a8493a7cb5ff6.jpg",
+    "static/media/great-support.jpg": "/static/media/great-support.13341f4e93333e45ebbe.jpg",
+    "static/media/advanced-option.jpg": "/static/media/advanced-option.84c7d0693123632c9035.jpg",
+    "static/media/modern-design.jpg": "/static/media/modern-design.e2114f5b8abbe8b1fa8b.jpg",
+    "static/media/clean-design.jpg": "/static/media/clean-design.728069dab437b67d9da8.jpg",
+    "index.html": "/index.html",
+    "main.892c7f1f.css.map": "/static/css/main.892c7f1f.css.map",
+    "main.5a0b5ed8.js.map": "/static/js/main.5a0b5ed8.js.map",
+    "703.803384da.chunk.js.map": "/static/js/703.803384da.chunk.js.map",
+    "278.58f85fd5.chunk.js.map": "/static/js/278.58f85fd5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.892c7f1f.css",
+    "static/js/main.5a0b5ed8.js"
+  ]
+}
